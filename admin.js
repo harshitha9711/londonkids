@@ -186,7 +186,7 @@ window.location.href=
 async function loadAdmissions() {
 
   let res = await fetch(
-    "http://localhost:5000/api/admissions"
+    "https://londonkids-backend.onrender.com/api/admissions"
   );
 
   let data = await res.json();

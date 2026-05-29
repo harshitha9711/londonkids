@@ -7,7 +7,7 @@ async function login() {
     document.getElementById("password").value;
 
   let res = await fetch(
-    "http://localhost:5000/api/login",
+    "https://londonkids-backend.onrender.com/api/login",
     {
       method: "POST",
       headers: {
