@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<section>
+
+<h1 class="title">
+Admin Dashboard
+</h1>
+<button
+class="logout"
+
+onclick="logout()">
+
+Logout
+
+</button>
+
+<div class="admin-box">
+
+<h2>
+Gallery Management
+</h2>
+
+<hr>
+
+<h2>Admissions Management</h2>
+<input
+  type="text"
+  id="searchAdmission"
+  placeholder="Search by Student, Parent or Phone"
+  onkeyup="loadAdmissions()"
+  style="width:100%;padding:12px;margin-bottom:15px;"
+>
+<table id="admissionsTable" border="1" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Parent</th>
+      <th>Student</th>
+      <th>Class</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+
+<div class="upload-row">
+
+<input
+type="file"
+id="galleryUpload"
+>
+
+<button
+onclick="addImage()">
+
+Upload 📤
+
+</button>
+
+</div>
+
+<div id="adminGallery">
+
+</div>
+
+</div>
+
+</section>
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>
