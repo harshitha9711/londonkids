@@ -36,7 +36,7 @@ async function login() {
 
     document.getElementById("error")
       .innerHTML =
-      "Wrong Login";
+      " Login Failed";
 
   }
 

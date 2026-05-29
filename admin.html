@@ -24,6 +24,19 @@ onclick="logout()">
 Logout
 
 </button>
+<div class="stats-box">
+
+  <div class="card">
+    <h2 id="totalAdmissions">0</h2>
+    <p>Admissions</p>
+  </div>
+
+  <div class="card">
+    <h2 id="totalImages">0</h2>
+    <p>Gallery Images</p>
+  </div>
+
+</div>
 
 <div class="admin-box">
 
@@ -37,9 +50,9 @@ Gallery Management
 <input
   type="text"
   id="searchAdmission"
-  placeholder="Search by Student, Parent or Phone"
+  class="search-box"
+  placeholder="🔍 Search Student, Parent or Phone"
   onkeyup="loadAdmissions()"
-  style="width:100%;padding:12px;margin-bottom:15px;"
 >
 <table id="admissionsTable" border="1" width="100%">
   <thead>

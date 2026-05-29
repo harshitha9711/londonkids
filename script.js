@@ -186,7 +186,12 @@ document
 
 if(gallery){
 
-let images=
+let images = [
+  "images/school1.jpeg",
+  "images/school2.jpeg",
+  "images/school3.jpeg",
+  "images/school4.jpeg"
+];
 
 JSON.parse(
 

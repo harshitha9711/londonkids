@@ -73,6 +73,8 @@ images
 alert(
 "Uploaded"
 );
+updateDashboardCounts();
+loadGallery();
 
 };
 
@@ -164,6 +166,7 @@ images
 );
 
 loadGallery();
+updateDashboardCounts();
 
 }
 
@@ -189,15 +192,15 @@ async function loadAdmissions() {
   let data = await res.json();
 
   let search = document
-  .getElementById("searchAdmission")
-  ?.value
-  .toLowerCase() || "";
+    .getElementById("searchAdmission")
+    ?.value
+    .toLowerCase() || "";
 
-data = data.filter(row =>
-  row.student_name.toLowerCase().includes(search) ||
-  row.parent_name.toLowerCase().includes(search) ||
-  row.phone.toLowerCase().includes(search)
-);
+  data = data.filter(row =>
+    row.student_name.toLowerCase().includes(search) ||
+    row.parent_name.toLowerCase().includes(search) ||
+    row.phone.toLowerCase().includes(search)
+  );
 
   let tbody = document.querySelector(
     "#admissionsTable tbody"
@@ -217,14 +220,36 @@ data = data.filter(row =>
         <td>${row.class_name}</td>
         <td>${row.phone}</td>
         <td>
-  <button onclick="deleteAdmission(${row.id})">
-    Delete
-  </button>
-</td>
+          <button onclick="deleteAdmission(${row.id})">
+            Delete
+          </button>
+        </td>
       </tr>
     `;
 
   });
+
+  let totalAdmissions =
+    document.getElementById("totalAdmissions");
+
+  if (totalAdmissions) {
+    totalAdmissions.innerText = data.length;
+  }
+
+}
+
+function updateDashboardCounts() {
+
+  let images = JSON.parse(
+    localStorage.getItem("gallery") || "[]"
+  );
+
+  let imageCount =
+    document.getElementById("totalImages");
+
+  if (imageCount) {
+    imageCount.innerText = images.length;
+  }
 
 }
 
@@ -248,3 +273,4 @@ async function deleteAdmission(id) {
 }
 
 loadAdmissions();
+updateDashboardCounts();
