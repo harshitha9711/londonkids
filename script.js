@@ -110,18 +110,44 @@ document
 .getElementById("admissionForm")
 .reset();
 
+try {
 
+  let res = await fetch(
+    "https://londonkids-backend.onrender.com/api/admission",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+  );
 
-await fetch(
-"http://localhost:5000/api/admission",
-{
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
+  let result = await res.json();
+
+  if(result.success){
+
+    showThank();
+
+    document
+    .getElementById("admissionForm")
+    .reset();
+
+  }else{
+
+    alert("Submission Failed");
+
+  }
+
+}catch(err){
+
+  console.error(err);
+
+  alert("Server Error");
+
 }
-);
+
+
 
 setTimeout(()=>{
 
