@@ -24,7 +24,7 @@ document
 .getElementById(
 "galleryUpload"
 )
-.files[0];
+.files[4];
 
 if(!file){
 
@@ -240,16 +240,7 @@ async function loadAdmissions() {
 
 function updateDashboardCounts() {
 
-  let images = JSON.parse(
-    localStorage.getItem("gallery") || "[]"
-  );
-
-  let imageCount =
-    document.getElementById("totalImages");
-
-  if (imageCount) {
-    imageCount.innerText = images.length;
-  }
+  document.getElementById("totalImages").innerText = 4;
 
 }
 
