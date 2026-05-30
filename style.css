@@ -1810,3 +1810,26 @@ height: 250px;
 }
 }
 
+@media(max-width:600px){
+
+#gallery{
+display:flex !important;
+flex-direction:column !important;
+gap:20px !important;
+padding:10px !important;
+}
+
+.gallery-card{
+width:100% !important;
+max-width:100% !important;
+margin:auto !important;
+}
+
+.gallery-card img{
+width:100% !important;
+height:250px !important;
+object-fit:cover !important;
+display:block !important;
+}
+
+}
