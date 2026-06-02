@@ -217,6 +217,7 @@ async function loadAdmissions() {
         <td>${row.id}</td>
         <td>${row.parent_name}</td>
         <td>${row.student_name}</td>
+        <td>${row.age}</td>
         <td>${row.class_name}</td>
         <td>${row.phone}</td>
         <td>

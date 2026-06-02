@@ -82,6 +82,9 @@ document.getElementById("parent").value,
 student:
 document.getElementById("student").value,
 
+age:
+document.getElementById("age").value,
+
 class:
 document.getElementById("class").value,
 

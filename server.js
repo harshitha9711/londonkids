@@ -25,6 +25,7 @@ app.post("/api/admission", async (req, res) => {
     const {
       parent,
       student,
+      age,
       class: className,
       phone,
       message
@@ -32,9 +33,9 @@ app.post("/api/admission", async (req, res) => {
 
     await pool.query(
       `INSERT INTO admissions
-      (parent_name, student_name, class_name, phone, message)
-      VALUES ($1, $2, $3, $4, $5)`,
-      [parent, student, className, phone, message]
+(parent_name, student_name, age, class_name, phone, message)
+VALUES ($1, $2, $3, $4, $5, $6)`,
+      [parent, student, age, className, phone, message]
     );
 
     res.json({
