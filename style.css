@@ -390,7 +390,7 @@ color:white;
 
 .chairman{
 
-display:flex;
+display:block;
 
 align-items:center;
 
@@ -445,6 +445,7 @@ color:#163c89;
 
 margin-bottom:20px;
 
+text-align: center;
 }
 
 .chairman-text p{
@@ -1663,6 +1664,12 @@ right:30px;
     margin:8px 0;
     color:#555;
 }
+
+.contact-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
 .reviews{
     padding:60px 20px;
     text-align:center;
@@ -1877,4 +1884,43 @@ display:block !important;
     display: flex;
     overflow-x: auto;
     gap: 15px;
+}
+
+.leaders{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+}
+
+.leader-card{
+  text-align:center;
+  flex:1;
+}
+
+.leader-card img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+@media(max-width:768px){
+
+  .leaders{
+    flex-direction:column;
+  }
+
+}
+
+.achievements-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+
+@media (max-width:768px){
+    .contact-grid{
+        grid-template-columns: 1fr;
+    }
 }

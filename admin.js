@@ -14,7 +14,7 @@ localStorage
 
 window.location.href=
 
-"login.html";
+"admin-login.html";
 
 }
 function addImage(){
