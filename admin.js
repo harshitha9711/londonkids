@@ -54,6 +54,8 @@ body:formData
 const data =
 await res.json();
 
+console.log(data);
+
 if(data.success){
 
 alert("Image Uploaded");
@@ -63,6 +65,8 @@ loadGallery();
 }else{
 
 alert("Upload Failed");
+
+alert(JSON.stringify(data));
 
 }
 
