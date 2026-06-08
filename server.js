@@ -1,12 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");
+const cloudinary = require("./cloudinary");
+const multer = require("multer");
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+const upload = multer({
+  storage: multer.memoryStorage()
+});
 app.get("/", (req, res) => {
   res.send("Server Running");
 });
@@ -130,6 +135,89 @@ if (result.rows.length > 0) {
     });
 
   }
+});
+
+app.post(
+  "/api/gallery",
+  upload.single("image"),
+  async (req, res) => {
+
+    try {
+
+      const base64 =
+        `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+
+      const result =
+        await cloudinary.uploader.upload(base64, {
+          folder: "londonkids"
+        });
+
+      await pool.query(
+        "INSERT INTO gallery(image_url) VALUES($1)",
+        [result.secure_url]
+      );
+
+      res.json({
+        success: true,
+        image: result.secure_url
+      });
+
+    } catch(err){
+
+      console.error(err);
+
+      res.status(500).json({
+        success:false,
+        error:err.message
+      });
+
+    }
+
+  }
+);
+
+app.get("/api/gallery", async (req,res)=>{
+
+  try{
+
+    const result =
+      await pool.query(
+        "SELECT * FROM gallery ORDER BY id DESC"
+      );
+
+    res.json(result.rows);
+
+  }catch(err){
+
+    res.status(500).json({
+      error:err.message
+    });
+
+  }
+
+});
+
+app.delete("/api/gallery/:id", async (req,res)=>{
+
+  try{
+
+    await pool.query(
+      "DELETE FROM gallery WHERE id=$1",
+      [req.params.id]
+    );
+
+    res.json({
+      success:true
+    });
+
+  }catch(err){
+
+    res.status(500).json({
+      error:err.message
+    });
+
+  }
+
 });
 
 app.listen(5000, () => {

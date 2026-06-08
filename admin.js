@@ -17,111 +17,95 @@ window.location.href=
 "admin-login.html";
 
 }
-function addImage(){
 
-let file=
+async function addImage(){
+
+const file =
 document
-.getElementById(
-"galleryUpload"
-)
-.files[4];
+.getElementById("galleryUpload")
+.files[0];
 
 if(!file){
 
-alert(
-"Select image"
-);
-
+alert("Select image");
 return;
 
 }
 
-let reader=
-new FileReader();
+const formData =
+new FormData();
 
-reader.onload=
-function(e){
-
-let images=
-
-JSON.parse(
-
-localStorage
-.getItem(
-"gallery"
-)
-
-|| "[]"
-
-);
-
-images.push(
-e.target.result
-);
-
-localStorage
-.setItem(
-
-"gallery",
-
-JSON.stringify(
-images
-)
-
-);
-
-alert(
-"Uploaded"
-);
-updateDashboardCounts();
-loadGallery();
-
-};
-
-reader.readAsDataURL(
+formData.append(
+"image",
 file
 );
 
+try{
+
+const res =
+await fetch(
+"https://londonkids-backend.onrender.com/api/gallery",
+{
+method:"POST",
+body:formData
 }
-function loadGallery(){
-
-let images=
-
-JSON.parse(
-
-localStorage.getItem(
-"gallery"
-)
-
-|| "[]"
-
 );
 
-let box=
+const data =
+await res.json();
 
+if(data.success){
+
+alert("Image Uploaded");
+
+loadGallery();
+
+}else{
+
+alert("Upload Failed");
+
+}
+
+}catch(err){
+
+console.error(err);
+
+alert("Server Error");
+
+}
+
+}
+
+async function loadGallery(){
+
+const res =
+await fetch(
+"https://londonkids-backend.onrender.com/api/gallery"
+);
+
+const images =
+await res.json();
+
+const box =
 document.getElementById(
 "adminGallery"
 );
 
-if(!box)return;
+if(!box) return;
 
 box.innerHTML="";
 
-images.forEach(
-(src,index)=>{
+images.forEach(img=>{
 
-box.innerHTML+=`
+box.innerHTML += `
 
 <div class="admin-card">
 
-<img src="${src}">
+<img src="${img.image_url}">
 
 <button
-onclick="deleteOne(${index})"
->
-
+onclick="deleteOne(${img.id})">
 ❌
-
 </button>
 
 </div>
@@ -130,43 +114,34 @@ onclick="deleteOne(${index})"
 
 });
 
+document.getElementById(
+"totalImages"
+).innerText =
+images.length;
+
 }
 
-function deleteOne(index){
+async function deleteOne(id){
 
-let ok=
+const ok =
 confirm(
-"Delete this image?"
+"Delete image?"
 );
 
-if(!ok)return;
+if(!ok) return;
 
-let images=
-
-JSON.parse(
-
-localStorage.getItem(
-"gallery"
-)
-
-|| "[]"
-
+const res = await fetch(
+`https://londonkids-backend.onrender.com/api/gallery/${id}`,
+{
+method:"DELETE"
+}
 );
 
-images.splice(index,1);
+const data = await res.json();
 
-localStorage.setItem(
-
-"gallery",
-
-JSON.stringify(
-images
-)
-
-);
-
-loadGallery();
-updateDashboardCounts();
+if(data.success){
+  loadGallery();
+}
 
 }
 
@@ -239,11 +214,7 @@ async function loadAdmissions() {
 
 }
 
-function updateDashboardCounts() {
 
-  document.getElementById("totalImages").innerText = 4;
-
-}
 
 async function deleteAdmission(id) {
 
@@ -253,16 +224,16 @@ async function deleteAdmission(id) {
 
   if (!ok) return;
 
-  await fetch(
-    `http://localhost:5000/api/admissions/${id}`,
-    {
-      method: "DELETE"
-    }
-  );
+await fetch(
+`https://londonkids-backend.onrender.com/api/admissions/${id}`,
+{
+method:"DELETE"
+}
+);
 
   loadAdmissions();
 
 }
 
 loadAdmissions();
-updateDashboardCounts();
+loadGallery();

@@ -216,22 +216,17 @@ document
 if(gallery){
 
 let images = [
-  "images/school1.jpeg",
-  "images/school2.jpeg",
-  "images/school3.jpeg",
-  "images/school4.jpeg"
-];
 
-JSON.parse(
+"images/school1.jpeg",
+"images/school2.jpeg",
+"images/school3.jpeg",
+"images/school4.jpeg",
 
-localStorage
-.getItem(
-"gallery"
+...JSON.parse(
+localStorage.getItem("gallery") || "[]"
 )
 
-|| "[]"
-
-);
+];
 
 gallery.innerHTML="";
 

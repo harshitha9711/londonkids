@@ -38,7 +38,7 @@ rgba(8,20,60,.65)
 
 ),
 
-url("https://imgs.search.brave.com/rF3etckvqytzmVItog_kE09YTarMh2VxCspmh6342UM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LmpkbWFnaWNi/b3guY29tL2NvbXAv/d2FyYW5nYWwvczEv/OTk5OXB4ODcwLng4/NzAuMjQwNDAyMTE1/MjIxLmc2czEvY2F0/YWxvZ3VlLzk4NzU1/Mzh6dWFrOGZzeS11/ajhrcTE3eXZ1Lmpw/Zz93PTM4NDAmcT03/NQ");
+url("images/school-building.jpeg");
 
 background-size:cover;
 
@@ -185,7 +185,7 @@ translateY(-8px);
 }
 section{
 
-padding:80px 10%;
+padding:60px 20px;
 
 }
 
@@ -454,6 +454,8 @@ line-height:1.9;
 
 font-size:18px;
 
+text-align: center;
+
 color:#555;
 
 }
@@ -680,15 +682,15 @@ nav{
 
 position:fixed;
 
-top:20px;
+top:0;
 
-left:50%;
+left:0;
 
-transform:translateX(-50%);
+width:100%;
 
-width:94%;
+transform:none;
 
-padding:20px 50px;
+padding:15px 40px;
 
 background:
 
@@ -716,7 +718,7 @@ rgba(
 0.3
 );
 
-border-radius:30px;
+border-radius:0;
 
 z-index:999;
 
@@ -745,22 +747,35 @@ gap:10px;
 
 .logo img{
 
-width:70px;
+width: 70px;
 
 height:70px;
 
 object-fit:contain;
 
+border-radius:50%;
+
 }
 
 .logo span{
 
-font-size:22px;
-
-font-weight:bold;
-
 color:#163c89;
 
+}
+
+.logo h1{
+font-size:24px;
+margin:0;
+}
+
+.logo h2{
+font-size:14px;
+margin:0;
+}
+
+.logo p{
+font-size:12px;
+margin:0;
 }
 
 nav ul{
@@ -1923,4 +1938,8 @@ display:block !important;
     .contact-grid{
         grid-template-columns: 1fr;
     }
+}
+
+body{
+padding-top:120px;
 }
