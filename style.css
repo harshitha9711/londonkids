@@ -101,7 +101,7 @@ opacity:1;
 
 .hero h1{
 
-font-size:92px;
+font: size 70px;
 
 font-weight:900;
 
@@ -238,7 +238,7 @@ color:#163c89;
 
 .form{
 
-max-width:700px;
+max-width:650px;
 
 margin:auto;
 
@@ -390,7 +390,7 @@ color:white;
 
 .chairman{
 
-display:block;
+text-align: center;
 
 align-items:center;
 
@@ -433,8 +433,8 @@ rgba(
 
 .chairman-text{
 
-max-width:650px;
-
+max-width:900px;
+margin: auto;
 }
 
 .chairman-text h2{
@@ -690,7 +690,7 @@ width:100%;
 
 transform:none;
 
-padding:15px 40px;
+padding:10px 30px;
 
 background:
 
@@ -976,7 +976,7 @@ font-weight:900;
 
 color:#163c89;
 
-margin-bottom:50px;
+margin-bottom:30px;
 
 }
 #adminGallery{
