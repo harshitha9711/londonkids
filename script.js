@@ -206,42 +206,40 @@ document
 );
 
 }
-let gallery=
 
-document
-.getElementById(
-"gallery"
-);
+const gallery =
+document.getElementById("gallery");
 
 if(gallery){
 
-let images = [
+loadGalleryImages();
 
-"images/school1.jpeg",
-"images/school2.jpeg",
-"images/school3.jpeg",
-"images/school4.jpeg",
+}
 
-...JSON.parse(
-localStorage.getItem("gallery") || "[]"
-)
+async function loadGalleryImages(){
 
-];
+try{
 
-gallery.innerHTML="";
+const res =
+await fetch(
+"https://londonkids-backend.onrender.com/api/gallery"
+);
 
-images.forEach(src=>{
-    
-gallery.innerHTML+=`
+const images =
+await res.json();
+
+gallery.innerHTML = "";
+
+images.forEach(img=>{
+
+gallery.innerHTML += `
 
 <div class="gallery-card">
 
 <img
-src="${src}"
-onclick="openImage('${src}')"
+src="${img.image_url}"
+onclick="openImage('${img.image_url}')"
 >
-
-
 
 </div>
 
@@ -249,7 +247,14 @@ onclick="openImage('${src}')"
 
 });
 
+}catch(err){
+
+console.error(err);
+
 }
+
+}
+
 function openImage(src){
 
 let popup=
@@ -284,27 +289,4 @@ document
 "none";
 
 }
-function deleteGallery(){
 
-let ok=
-
-confirm(
-"Delete all gallery images?"
-);
-
-if(ok){
-
-localStorage
-.removeItem(
-"gallery"
-);
-
-alert(
-"Gallery cleared"
-);
-
-location.reload();
-
-}
-
-}
