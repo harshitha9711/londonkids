@@ -109,7 +109,7 @@ box.innerHTML += `
 
 <button
 onclick="deleteOne(${img.id})">
-❌
+✕
 </button>
 
 </div>

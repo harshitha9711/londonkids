@@ -927,29 +927,6 @@ border-radius:20px;
 
 }
 
-.admin-card button{
-
-position:absolute;
-
-top:10px;
-
-right:10px;
-
-width:40px;
-
-height:40px;
-
-border:none;
-
-border-radius:50%;
-
-background:red;
-
-color:white;
-
-cursor:pointer;
-
-}
 
 
 
@@ -1308,46 +1285,6 @@ opacity:1;
 
 /* Delete */
 
-.admin-card button{
-
-position:absolute;
-
-top:15px;
-
-right:15px;
-
-width:60px;
-
-height:60px;
-
-border:none;
-
-border-radius:50%;
-
-background:
-
-linear-gradient(
-135deg,
-#ff4444,
-#d80000
-);
-
-color:white;
-
-font-size:22px;
-
-cursor:pointer;
-
-z-index:10;
-
-}
-
-.admin-card button:hover{
-
-transform:
-scale(1.15);
-
-}
 
 /* Responsive */
 
@@ -1602,21 +1539,30 @@ right:30px;
     text-decoration:none;
 }
 
-
 .card{
-    width:220px;
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+background:white;
+padding:35px;
+border-radius:25px;
+text-align:center;
+
+box-shadow:
+0 15px 40px rgba(37,99,235,.15);
+
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
 }
 
 .card h2{
-    color:#2563eb;
-    font-size:35px;
-    margin:0;
+font-size:55px;
+font-weight:900;
+color:#2563eb;
 }
+
+
+
 
 .card p{
     margin-top:10px;
@@ -1913,11 +1859,19 @@ border-radius:15px;
 #adminGallery{
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
+repeat(4,1fr);
 gap:25px;
-margin-top:40px;
 }
 
+.admin-card{
+height:280px;
+}
+
+.admin-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 .admin-card button{
 width:45px;
 height:45px;
@@ -1941,11 +1895,13 @@ box-shadow: 0 5px 20px rgba(0,0,0,.08);
 .admin-header h1{
     color: #163c89;
     font-size: 32px;
+    text-align: center;
     margin: 0;
 }
 .admin-header p{
     color: #666;
     margin-top: 5px;
+    text-align: center;
 
 }
 
@@ -1997,3 +1953,94 @@ position:static;
 
 }
 
+.admin-card{
+position:relative;
+overflow:hidden;
+border-radius:25px;
+}
+
+.admin-card button{
+position:absolute;
+top:10px;
+right:10px;
+width:45px;
+height:45px;
+z-index:100;
+}
+
+.admin-header{
+background:
+linear-gradient(
+135deg,
+#163c89,
+#2563eb
+);
+
+color:white;
+
+padding:30px 50px;
+
+border-radius:0 0 30px 30px;
+}
+
+.admin-header h1{
+color:white;
+font-size:42px;
+}
+
+.admin-header p{
+color:#e5e7eb;
+}
+
+.upload-box{
+background:white;
+padding:30px;
+border-radius:25px;
+max-width:600px;
+margin:30px auto;
+text-align:center;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+}
+
+.title{
+font-size:60px;
+margin-top:20px;
+margin-bottom:30px;
+}
+
+.admin-card button{
+position:absolute;
+top:10px;
+right:10px;
+
+width:38px;
+height:38px;
+
+border:none;
+border-radius:50%;
+
+background:rgba(255,0,0,.9);
+color:white;
+
+font-size:16px;
+font-weight:bold;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:pointer;
+z-index:10;
+
+box-shadow:
+0 4px 12px rgba(0,0,0,.25);
+
+transition:.3s;
+}
+
+.admin-card button:hover{
+transform:scale(1.1);
+background:#d80000;
+}
