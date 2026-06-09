@@ -1,20 +1,15 @@
+const token =
+localStorage.getItem(
+"adminToken"
+);
 
 if(
-
-localStorage
-.getItem(
-"admin"
-)
-
-!==
-
-"true"
-
+token !==
+"londonkids_super_secret_2026"
 ){
 
-window.location.href=
-
-"admin-login.html";
+window.location.href =
+"login.html";
 
 }
 
@@ -42,11 +37,19 @@ file
 
 try{
 
+  const token =
+localStorage.getItem(
+"adminToken"
+);
+
 const res =
 await fetch(
 "https://londonkids-backend.onrender.com/api/gallery",
 {
 method:"POST",
+headers:{
+Authorization:token
+},
 body:formData
 }
 );
@@ -128,36 +131,45 @@ images.length;
 async function deleteOne(id){
 
 const ok =
-confirm(
-"Delete image?"
-);
+confirm("Delete image?");
 
 if(!ok) return;
+
+const token =
+localStorage.getItem(
+"adminToken"
+);
 
 const res = await fetch(
 `https://londonkids-backend.onrender.com/api/gallery/${id}`,
 {
-method:"DELETE"
+method:"DELETE",
+headers:{
+Authorization:token
+}
 }
 );
 
-const data = await res.json();
+const data =
+await res.json();
 
 if(data.success){
-  loadGallery();
+
+loadGallery();
+
 }
 
 }
 
 loadGallery();
+
 function logout(){
 
 localStorage.removeItem(
-"admin"
+"adminToken"
 );
 
-window.location.href=
-
+window.location.href =
 "login.html";
 
 }
@@ -228,10 +240,18 @@ async function deleteAdmission(id) {
 
   if (!ok) return;
 
+const token =
+localStorage.getItem(
+"adminToken"
+);
+
 await fetch(
 `https://londonkids-backend.onrender.com/api/admissions/${id}`,
 {
-method:"DELETE"
+method:"DELETE",
+headers:{
+Authorization:token
+}
 }
 );
 

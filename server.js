@@ -78,7 +78,10 @@ app.get("/api/admissions", async (req, res) => {
   }
 });
 
-app.delete("/api/admissions/:id", async (req, res) => {
+app.delete(
+"/api/admissions/:id",
+verifyAdmin,
+async (req,res)=>{
   try {
 
     const id = req.params.id;
@@ -116,10 +119,13 @@ const result = await pool.query(
 if (result.rows.length > 0) {
 
   res.json({
-    success: true
+    success: true,
+    token: process.env.ADMIN_TOKEN
   });
 
-} else {
+}
+
+else {
 
   res.json({
     success: false
@@ -139,8 +145,9 @@ if (result.rows.length > 0) {
 });
 
 app.post(
-  "/api/gallery",
-  upload.single("image"),
+"/api/gallery",
+verifyAdmin,
+upload.single("image"),
   async (req, res) => {
 
     try {
@@ -198,7 +205,10 @@ app.get("/api/gallery", async (req,res)=>{
 
 });
 
-app.delete("/api/gallery/:id", async (req,res)=>{
+app.delete(
+"/api/gallery/:id",
+verifyAdmin,
+async (req,res)=>{
 
   try{
 
@@ -220,6 +230,29 @@ app.delete("/api/gallery/:id", async (req,res)=>{
   }
 
 });
+
+function verifyAdmin(
+req,
+res,
+next
+){
+
+const token =
+req.headers.authorization;
+
+if(
+token !== process.env.ADMIN_TOKEN
+){
+
+return res.status(401).json({
+success:false
+});
+
+}
+
+next();
+
+}
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

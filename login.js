@@ -21,13 +21,13 @@ async function login() {
   );
 
   let data = await res.json();
-
+console.log(data);
   if (data.success) {
 
     localStorage.setItem(
-      "admin",
-      "true"
-    );
+"adminToken",
+data.token
+);
 
     window.location.href =
       "admin.html";
