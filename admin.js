@@ -3,10 +3,7 @@ localStorage.getItem(
 "adminToken"
 );
 
-if(
-token !==
-"londonkids_super_secret_2026"
-){
+if(!token){
 
 window.location.href =
 "login.html";

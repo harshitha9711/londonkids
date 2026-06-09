@@ -913,11 +913,7 @@ padding:40px;
 
 }
 
-.admin-card{
 
-position:relative;
-
-}
 
 .admin-card img{
 
@@ -1088,7 +1084,7 @@ translateY(-6px);
 /* ===== ADMIN DASHBOARD ===== */
 
 body{
-padding: top 120px; 
+padding-top:  120px; 
 background:
 linear-gradient(
 135deg,
@@ -1227,15 +1223,17 @@ gap:35px;
 
 /* Cards */
 
-.admin-card{
+.admin-stat-card{
 
 position:relative;
 
 background:white;
 
-border-radius:30px;
+border: radius 2px;
 
 overflow:hidden;
+
+padding: 30px;
 
 box-shadow:
 0 20px 40px
@@ -1603,12 +1601,7 @@ right:30px;
     border-radius:30px;
     text-decoration:none;
 }
-.stats-box{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-bottom:25px;
-}
+
 
 .card{
     width:220px;
@@ -1870,9 +1863,10 @@ footer{
 
 .stats-box{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(2,1fr);
 gap:25px;
-margin:40px 0;
+margin:40px auto;
+max-width: 700px;
 }
 
 .card{
@@ -1939,4 +1933,67 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 margin-bottom:40px;
+padding: 20px 40px;
+background: white;
+box-shadow: 0 5px 20px rgba(0,0,0,.08);
 }
+
+.admin-header h1{
+    color: #163c89;
+    font-size: 32px;
+    margin: 0;
+}
+.admin-header p{
+    color: #666;
+    margin-top: 5px;
+
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+border-radius:15px;
+overflow:hidden;
+}
+
+th{
+background:#163c89;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+}
+
+tr:hover{
+background:#eef4ff;
+}
+
+@media(max-width:768px){
+
+.admin-header{
+flex-direction:column;
+gap:15px;
+text-align:center;
+}
+
+.stats-box{
+grid-template-columns:1fr;
+}
+
+.admin-box{
+padding:20px;
+}
+
+table{
+font-size:13px;
+}
+
+.logout{
+position:static;
+}
+
+}
+
