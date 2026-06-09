@@ -1,5 +1,6 @@
 async function login() {
-
+ console.log("Login clicked");
+ try{
   let email =
     document.getElementById("email").value;
 
@@ -19,7 +20,7 @@ async function login() {
       })
     }
   );
-
+console.log("Response received");
   let data = await res.json();
 console.log(data);
   if (data.success) {
@@ -40,4 +41,8 @@ data.token
 
   }
 
+}catch(err){
+  console.error(err);
+  alert(err.message);
+}
 }
