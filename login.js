@@ -1,48 +1,28 @@
-async function login() {
- console.log("Login clicked");
- try{
-  let email =
-    document.getElementById("email").value;
+async function login(){
 
-  let password =
-    document.getElementById("password").value;
+const email=document.getElementById("email").value;
+const password=document.getElementById("password").value;
 
-  let res = await fetch(
-    "https://londonkids-backend.onrender.com/api/login",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
-    }
-  );
-console.log("Response received");
-  let data = await res.json();
-console.log(data);
-  if (data.success) {
+console.log(email,password);
 
-    localStorage.setItem(
-"adminToken",
-data.token
+const res=await fetch(
+"https://londonkids-backend.onrender.com/api/login",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+email,
+password
+})
+}
 );
 
-    window.location.href =
-      "admin.html";
+console.log("Status:",res.status);
 
-  } else {
+const data=await res.json();
 
-    document.getElementById("error")
-      .innerHTML =
-      " Login Failed";
+console.log(data);
 
-  }
-
-}catch(err){
-  console.error(err);
-  alert(err.message);
-}
 }
