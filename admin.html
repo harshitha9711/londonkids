@@ -2,6 +2,11 @@
 <html>
 
 <head>
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard</title>
 
@@ -38,7 +43,7 @@ Logout
   </div>
 
   <div class="admin-stat-card">
-    <h2 id="totalImages">4</h2>
+    <h2 id="totalImages">0</h2>
     <p>Gallery Images</p>
   </div>
 
@@ -57,7 +62,9 @@ Logout
   placeholder="🔍 Search Student, Parent or Phone"
   onkeyup="loadAdmissions()"
 >
-<table id="admissionsTable" border="1" width="100%">
+<div class="table-wrapper">
+
+<table id="admissionsTable">
   <thead>
     <tr>
       <th>ID</th>
@@ -74,14 +81,14 @@ Logout
 
   </tbody>
 </table>
-
+</div>
 
 <div class="upload-box">
 
 <input
 type="file"
 id="galleryUpload"
->
+accept="image/png,image/jpeg,image/jpg,image/webp">
 
 <button
 onclick="addImage()">

@@ -290,3 +290,63 @@ document
 
 }
 
+function toggleMenu(){
+
+const navMenu =
+document.getElementById("navMenu");
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+if(!navMenu || !menuToggle){
+return;
+}
+
+navMenu.classList.toggle("show-menu");
+
+const isOpen =
+navMenu.classList.contains("show-menu");
+
+menuToggle.innerHTML =
+isOpen ? "✕" : "☰";
+
+menuToggle.setAttribute(
+"aria-expanded",
+isOpen
+);
+
+}
+
+document
+.querySelectorAll("#navMenu a")
+.forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+const navMenu =
+document.getElementById("navMenu");
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+if(!navMenu || !menuToggle){
+return;
+}
+
+navMenu.classList.remove(
+"show-menu"
+);
+
+menuToggle.innerHTML = "☰";
+
+menuToggle.setAttribute(
+"aria-expanded",
+"false"
+);
+
+}
+);
+
+});

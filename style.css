@@ -1206,7 +1206,7 @@ position:relative;
 
 background:white;
 
-border: radius 2px;
+border-radius: 20px;
 
 overflow:hidden;
 
@@ -1367,13 +1367,10 @@ padding:18px;
 }
 
 .logout{
-
-position:absolute;
-
-top:30px;
-
-right:30px;
-
+position:fixed;
+top:20px;
+right:20px;
+z-index:1000;
 }
 .map{
   width: 90%;
@@ -2043,4 +2040,401 @@ transition:.3s;
 .admin-card button:hover{
 transform:scale(1.1);
 background:#d80000;
+}
+
+
+/* ===========================
+   PERFECT MOBILE RESPONSIVE
+===========================*/
+
+@media screen and (max-width:768px){
+
+/* General */
+
+body{
+padding-top:90px;
+overflow-x:hidden;
+}
+
+section{
+padding:70px 20px;
+}
+
+.title{
+font-size:34px;
+margin-bottom:30px;
+}
+
+/* Header */
+
+header{
+height:80vh;
+padding:0 20px;
+}
+
+.hero h1{
+font-size:38px;
+line-height:1.2;
+letter-spacing:0;
+}
+
+.hero h2{
+font-size:22px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.hero-buttons{
+flex-direction:column;
+align-items:center;
+}
+
+.btn,
+.btn2{
+width:220px;
+text-align:center;
+}
+
+/* Navigation */
+
+nav{
+padding:10px 15px;
+flex-wrap:wrap;
+}
+
+.logo{
+justify-content:center;
+}
+
+.logo img{
+width:50px;
+height:50px;
+}
+
+.logo h1{
+font-size:18px;
+}
+
+.logo h2{
+font-size:12px;
+}
+
+.logo p{
+font-size:10px;
+}
+
+nav ul{
+display:none;
+}
+
+/* Chairman */
+
+.leaders{
+flex-direction:column;
+gap:35px;
+}
+
+.leader-card{
+width:100%;
+}
+
+.chairman-text h2{
+font-size:28px;
+}
+
+.chairman-text p{
+font-size:16px;
+}
+
+/* Statistics */
+
+.stats{
+flex-direction:column;
+align-items:center;
+}
+
+.stat-card{
+width:100%;
+}
+
+/* Contact */
+
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+.contact-card{
+width:100%;
+}
+
+/* Form */
+
+.form{
+width:100%;
+}
+
+input,
+select,
+textarea{
+width:100%;
+box-sizing:border-box;
+}
+
+/* Gallery */
+
+#gallery{
+display:grid !important;
+grid-template-columns:1fr !important;
+gap:20px;
+}
+
+.gallery-card img{
+height:240px;
+}
+
+/* Popup */
+
+.popup-box,
+.thank-box{
+width:90%;
+padding:25px;
+}
+
+/* Map */
+
+.map{
+height:300px;
+}
+
+/* Floating Buttons */
+
+.call,
+.whatsapp{
+width:55px;
+height:55px;
+font-size:26px;
+}
+
+/* Login */
+
+.login-box{
+width:90%;
+margin:60px auto;
+padding:25px;
+box-sizing:border-box;
+}
+
+.login-box input{
+width:100%;
+}
+
+/* Admin Header */
+
+.admin-header{
+padding:20px;
+text-align:center;
+}
+
+.admin-header h1{
+font-size:28px;
+}
+
+.admin-header p{
+font-size:14px;
+}
+
+/* Logout */
+
+.logout{
+position:static;
+margin-top:15px;
+}
+
+/* Dashboard Cards */
+
+.stats-box{
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.admin-stat-card{
+width:100%;
+}
+
+/* Search */
+
+.search-box{
+font-size:15px;
+}
+
+/* Table */
+
+.table-wrapper{
+overflow-x:auto;
+}
+
+table{
+min-width:700px;
+}
+
+/* Upload */
+
+.upload-box{
+width:100%;
+padding:20px;
+box-sizing:border-box;
+}
+
+.upload-box input{
+width:100%;
+margin-bottom:15px;
+}
+
+.upload-box button{
+width:100%;
+}
+
+/* Gallery */
+
+#adminGallery{
+grid-template-columns:1fr;
+gap:20px;
+padding:0;
+}
+
+.admin-card{
+height:auto;
+}
+
+.admin-card img{
+height:240px;
+}
+
+/* Delete Button */
+
+.admin-card button{
+width:34px;
+height:34px;
+font-size:14px;
+top:8px;
+right:8px;
+}
+
+}
+
+#error{
+
+margin-top:15px;
+
+color:#e11d48;
+
+font-weight:600;
+
+font-size:16px;
+
+text-align:center;
+
+}
+
+/* ===========================
+   MOBILE HAMBURGER MENU
+=========================== */
+
+nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-sizing:border-box;
+}
+
+.menu-toggle{
+display:none;
+background:transparent;
+color:#163c89;
+border:none;
+padding:8px;
+font-size:32px;
+line-height:1;
+cursor:pointer;
+box-shadow:none;
+}
+
+@media screen and (max-width:768px){
+
+nav{
+padding:10px 15px;
+flex-wrap:wrap;
+background:rgba(255,255,255,.96);
+}
+
+.logo{
+max-width:calc(100% - 65px);
+justify-content:flex-start;
+}
+
+.logo span{
+min-width:0;
+}
+
+.logo h1{
+font-size:16px;
+line-height:1.2;
+}
+
+.logo h2{
+font-size:11px;
+}
+
+.logo p{
+font-size:9px;
+}
+
+.menu-toggle{
+display:flex;
+align-items:center;
+justify-content:center;
+width:45px;
+height:45px;
+}
+
+nav ul{
+display:none;
+width:100%;
+flex-direction:column;
+align-items:stretch;
+gap:0;
+padding:15px 0 5px;
+margin:0;
+}
+
+nav ul.show-menu{
+display:flex;
+}
+
+nav ul li{
+width:100%;
+text-align:center;
+}
+
+nav ul li a{
+display:block;
+width:100%;
+padding:14px 10px;
+box-sizing:border-box;
+font-size:16px;
+}
+
+nav ul li a:hover{
+background:#eef4ff;
+color:#2563eb;
+}
+
+nav ul .nav-btn{
+width:auto;
+margin:10px 20px;
+padding:12px 20px;
+}
+
 }

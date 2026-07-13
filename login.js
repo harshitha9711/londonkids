@@ -2,7 +2,18 @@ async function login() {
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    if(email.trim()==="" || password.trim()===""){
 
+alert("Please enter Email and Password");
+
+return;
+
+}
+    const btn = document.querySelector("button");
+
+btn.disabled = true;
+
+btn.innerHTML = "Logging in...";
     console.log(email, password);
 
     try {
@@ -27,30 +38,37 @@ async function login() {
 
         console.log(data);
 
-        if (data.success) {
+if (data.success) {
 
-            localStorage.setItem(
-                "adminToken",
-                data.token
-            );
+    localStorage.setItem(
+        "adminToken",
+        data.token
+    );
 
-            console.log(
-                localStorage.getItem("adminToken")
-            );
+    window.location.href = "admin.html";
 
-            window.location.href = "admin.html";
+} else {
 
-        } else {
+    btn.disabled = false;
 
-            alert("Invalid Email or Password");
+    btn.innerHTML = "Login";
 
-        }
+    document.getElementById("error").innerHTML =
+    "❌ Invalid Email or Password";
 
-    } catch (err) {
+}
 
-        console.error(err);
-        alert("Server Error");
+    } catch(err){
 
-    }
+btn.disabled = false;
+
+btn.innerHTML = "Login";
+
+console.error(err);
+
+document.getElementById("error").innerHTML =
+"⚠ Unable to connect to the server.";
+
+}
 
 }

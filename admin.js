@@ -24,6 +24,13 @@ return;
 
 }
 
+if(file.size > 5 * 1024 * 1024){
+
+alert("Image size must be below 5 MB");
+
+return;
+}
+
 const formData =
 new FormData();
 
@@ -31,7 +38,12 @@ formData.append(
 "image",
 file
 );
+const btn =
+document.querySelector(".upload-box button");
 
+btn.disabled = true;
+
+btn.innerHTML = "Uploading...";
 try{
 
   const token =
@@ -58,19 +70,33 @@ console.log(data);
 
 if(data.success){
 
+btn.disabled = false;
+
+btn.innerHTML = "Upload 📤";
+
+document.getElementById("galleryUpload").value = "";
+
 alert("Image Uploaded");
 
 loadGallery();
 
 }else{
 
+btn.disabled = false;
+
+btn.innerHTML = "Upload 📤";
+
 alert("Upload Failed");
 
 alert(JSON.stringify(data));
 
 }
+}
+catch(err){
 
-}catch(err){
+btn.disabled = false;
+
+btn.innerHTML = "Upload 📤";
 
 console.error(err);
 
@@ -108,7 +134,7 @@ box.innerHTML += `
 <img src="${img.image_url}">
 
 <button
-onclick="deleteOne(${img.id})">
+onclick="deleteOne(${img.id}, this)">
 ✕
 </button>
 
@@ -125,18 +151,21 @@ images.length;
 
 }
 
-async function deleteOne(id){
+async function deleteOne(id,btn){
 
 const ok =
 confirm("Delete image?");
 
 if(!ok) return;
 
+btn.disabled = true;
+
+btn.innerHTML = "...";
+
 const token =
 localStorage.getItem(
 "adminToken"
 );
-
 const res = await fetch(
 `https://londonkids-backend.onrender.com/api/gallery/${id}`,
 {
@@ -153,6 +182,14 @@ await res.json();
 if(data.success){
 
 loadGallery();
+
+}else{
+
+btn.disabled = false;
+
+btn.innerHTML = "✕";
+
+alert("Delete Failed");
 
 }
 

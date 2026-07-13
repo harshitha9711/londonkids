@@ -25,7 +25,7 @@ href="style.css">
 <body>
 
 <!-- HERO -->
- <nav>
+<nav>
 
 <div class="logo">
 
@@ -43,7 +43,18 @@ alt="School Logo">
 
 </div>
 
-<ul>
+<button
+class="menu-toggle"
+id="menuToggle"
+type="button"
+aria-label="Open navigation menu"
+aria-expanded="false"
+onclick="toggleMenu()"
+>
+☰
+</button>
+
+<ul id="navMenu">
 
 <li>
 <a href="#">
@@ -118,15 +129,13 @@ Nurturing Young Minds For A Bright Future
   <div class="leaders">
 
     <div class="leader-card">
-      <img src="images/director.jpeg">
-      <h3>Chairman</h3>
+      <img src="images/director1.jpeg">
       <p>Boora Tarun Kumar</p>
       <p>Software Engineer - NRI</p>
     </div>
 
     <div class="leader-card">
       <img src="images/director.jpeg">
-      <h3>Director</h3>
       <p>Boora Poornachander</p>
       <p>MSc Agriculture</p>
     </div>
@@ -137,7 +146,7 @@ Nurturing Young Minds For A Bright Future
 
 <div class="chairman-text">
 
-  <h2>Message From Chairman & Director</h2>
+  <h2>Message </h2>
 
   <p>
 London Kids Preschool began with a simple vision—to provide quality early childhood education in a caring and joyful environment. From the very first day, we were committed to creating a place where children could learn, explore, and grow with confidence.
